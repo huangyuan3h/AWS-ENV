@@ -2,8 +2,17 @@
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { AwsEnvStack } from '../lib/aws-env-stack';
+import VPCStack from '../lib/VPCStack';
 
 const app = new cdk.App();
+
+const env = { account: '319653899185', region: 'ap-southeast-1' };
+
+new VPCStack(app, 'VPCStack',{
+  env,
+});
+
+
 new AwsEnvStack(app, 'AwsEnvStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
@@ -15,7 +24,10 @@ new AwsEnvStack(app, 'AwsEnvStack', {
 
   /* Uncomment the next line if you know exactly what Account and Region you
    * want to deploy the stack to. */
-  env: { account: '319653899185', region: 'ap-southeast-1' },
+  env,
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
+
+
+
