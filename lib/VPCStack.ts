@@ -23,5 +23,3 @@ export class VPCStack extends Stack {
     }
 
 }
-
-export default VPCStack;

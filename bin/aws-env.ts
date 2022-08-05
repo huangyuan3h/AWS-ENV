@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
+import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import { AwsEnvStack } from '../lib/aws-env-stack';
-import VPCStack from '../lib/VPCStack';
+import {VPCStack} from '../lib/VPCStack';
+import { Mysql } from '../lib/RDSStack';
 
 const app = new cdk.App();
 
@@ -10,6 +12,16 @@ const env = { account: '319653899185', region: 'ap-southeast-1' };
 
 new VPCStack(app, 'VPCStack',{
   env,
+});
+
+new Mysql(app, 'MysqlStack', {
+  env,
+  mysqlUsername:'yuanhuang',
+  description:"Mysql Stack",
+  vpcId:"vpc-064a917573f09148b",
+  subnetIds:["subnet-0c54561661147f001", "subnet-060fa6933a4306ed0"],
+  dbName:"FooDb",
+  instanceType: ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE3, ec2.InstanceSize.SMALL)
 });
 
 
@@ -28,6 +40,8 @@ new AwsEnvStack(app, 'AwsEnvStack', {
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
+
+
 
 
 
