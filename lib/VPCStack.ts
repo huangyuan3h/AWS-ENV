@@ -9,7 +9,7 @@ export class VPCStack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps) {
         super(scope, id, props);
         const vpc = new ec2.Vpc(this, 'vpc-foo', {
-            cidr: '10.0.0.0/16',
+            cidr: '10.1.0.0/16',
             natGateways: 1,
             maxAzs: 2,
             subnetConfiguration: [

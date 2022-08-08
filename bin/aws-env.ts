@@ -21,7 +21,7 @@ new Mysql(app, 'MysqlStack', {
   vpcId:"vpc-064a917573f09148b",
   subnetIds:["subnet-0c54561661147f001", "subnet-060fa6933a4306ed0"],
   dbName:"FooDb",
-  instanceType: ec2.InstanceType.of(ec2.InstanceClass.BURSTABLE3, ec2.InstanceSize.SMALL)
+  instanceType: ec2.InstanceType.of(ec2.InstanceClass.T3, ec2.InstanceSize.MICRO)
 });
 
 
