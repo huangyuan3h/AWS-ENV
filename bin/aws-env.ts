@@ -6,6 +6,7 @@ import { AwsEnvStack } from '../lib/aws-env-stack';
 import { VPCStack } from '../lib/VPCStack';
 import { Mysql } from '../lib/RDSStack';
 import { JumpServerStack } from '../lib/JumpServerStack';
+import { MysqlStack } from '../lib/MysqlStack';
 
 const app = new cdk.App();
 
@@ -19,6 +20,12 @@ const jumpServerStack = new JumpServerStack(app, 'JumpServerStack', {
   env,
   vpc: vpcStack.vpc,
 });
+
+const mysqlStack = new MysqlStack(app, 'MysqlStack', {
+  env,
+  vpc: vpcStack.vpc,
+  jumpserver: jumpServerStack.server
+})
 
 // new Mysql(app, 'MysqlStack', {
 //   env,

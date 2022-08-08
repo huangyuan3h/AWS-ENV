@@ -1,6 +1,5 @@
 import {
-    Stack, StackProps, Fn, Duration,
-    RemovalPolicy, CfnOutput, Tags,
+    Stack, StackProps
 } from 'aws-cdk-lib';
 import { Vpc, SecurityGroup, Peer, Port, Instance, SubnetType, InstanceClass, InstanceSize, InstanceType, AmazonLinuxImage, AmazonLinuxGeneration } from 'aws-cdk-lib/aws-ec2';
 import { Construct } from 'constructs';

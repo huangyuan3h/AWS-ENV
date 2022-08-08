@@ -1,0 +1,9 @@
+{
+  "VPCStack": {
+    "ExportsOutputRefvpcfoo8622EBB98085681A": "vpc-0b4ddc3646169733d",
+    "ExportsOutputRefvpcfoordssubnetSubnet3Subnet79B32E5E14026375": "subnet-0f3da5b0453ea4edc",
+    "ExportsOutputRefvpcfoordssubnetSubnet2Subnet71D668F95411BD4B": "subnet-0fb06c7ff4d7da78f",
+    "ExportsOutputRefvpcfoordssubnetSubnet1Subnet533ECE728C62F913": "subnet-02b59ccf811e029c9",
+    "ExportsOutputRefvpcfoofrontendsubnetSubnet1SubnetDE819640D0B14329": "subnet-0dd42bdf93fa6c96b"
+  }
+}
