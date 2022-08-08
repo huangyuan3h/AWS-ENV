@@ -6,20 +6,32 @@ import { Construct } from 'constructs';
 
 
 export class VPCStack extends Stack {
-    constructor(scope: Construct, id: string, props?: StackProps) {
-        super(scope, id, props);
-        const vpc = new ec2.Vpc(this, 'vpc-foo', {
-            cidr: '10.1.0.0/16',
-            natGateways: 1,
-            maxAzs: 2,
-            subnetConfiguration: [
-              {
-                name: 'public',
-                subnetType: ec2.SubnetType.PUBLIC,
-                cidrMask: 24,
-              },
-            ],
-          });
-    }
+  constructor(scope: Construct, id: string, props?: StackProps) {
+    super(scope, id, props);
+
+    const vpc = new ec2.Vpc(this, 'vpc-foo', {
+      cidr: '10.1.0.0/16',
+      natGateways: 1,
+      maxAzs: 3,
+      subnetConfiguration: [
+        {
+          name: 'backend-subnet',
+          subnetType: ec2.SubnetType.PRIVATE_WITH_NAT,
+          cidrMask: 24,
+        },
+        {
+          name: 'frontend-subnet',
+          subnetType: ec2.SubnetType.PUBLIC,
+          cidrMask: 24,
+        },
+        {
+          name: 'rds-subnet',
+          subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
+          cidrMask: 28,
+        },
+      ],
+    });
+
+  }
 
 }
