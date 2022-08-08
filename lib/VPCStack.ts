@@ -6,10 +6,13 @@ import { Construct } from 'constructs';
 
 
 export class VPCStack extends Stack {
+
+  vpc: ec2.Vpc
+
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const vpc = new ec2.Vpc(this, 'vpc-foo', {
+    this.vpc = new ec2.Vpc(this, 'vpc-foo', {
       cidr: '10.1.0.0/16',
       natGateways: 1,
       maxAzs: 3,
